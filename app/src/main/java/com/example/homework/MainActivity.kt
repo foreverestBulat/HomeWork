@@ -10,7 +10,6 @@ import android.widget.EditText
 class MainActivity : AppCompatActivity() {
 
     private var clickButton: Button? = null
-    var count = 0
     private var key: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,11 +18,11 @@ class MainActivity : AppCompatActivity() {
 
         clickButton = findViewById(R.id.button)
 
-        var textView = findViewById<TextView>(R.id.textView)
-        var editTextName = findViewById<EditText>(R.id.editTextText)
-        var editTextAge = findViewById<EditText>(R.id.editTextText2)
-        var editTextWeight = findViewById<EditText>(R.id.editTextText3)
-        var editTextHeight = findViewById<EditText>(R.id.editTextNumber)
+        val textView = findViewById<TextView>(R.id.et_view)
+        val editTextName = findViewById<EditText>(R.id.et_text_name)
+        val editTextAge = findViewById<EditText>(R.id.et_text_age)
+        val editTextWeight = findViewById<EditText>(R.id.et_text_weight)
+        val editTextHeight = findViewById<EditText>(R.id.et_number_height)
 
         editTextName.text.clear()
         editTextHeight.text.clear()
@@ -54,35 +53,33 @@ class MainActivity : AppCompatActivity() {
 
     fun checkCorrectnessOfEnteredData(name: String, heightString: String, weightString: String, ageString: String): String {
 
-        var res = "Data entered incorrectly:\n"
-
+        var res = resources.getString(R.string.textError)
+            //"Data entered incorrectly:\n"
         try{
             var height = heightString.toInt()
             var weight = weightString.toDouble()
             var age = ageString.toInt()
 
 
-            if (name == ""){
-                res = res + "the name should not be empty;\n"
+            if (name.isEmpty()){
+                res += resources.getString(R.string.emptyError)
             }
             if ((250 < height) or (0 > height)){
-                res = res + "the height must be greater than 0 and less than 250;\n"
+                res += resources.getString(R.string.heightError)
             }
             if ((250 < weight) or (0 > weight)){
-                res = res + "the weight must be greater than 0 and less than 250;\n"
+                res += resources.getString(R.string.widthError)
             }
             if ((age > 150) or (age < 0)) {
-                res = res + "the age must be greater than 0 and less than 150;\n"
+                res += resources.getString(R.string.ageError)
             }
 
             if (res.length > 30){
                 key = true
             } else {
                 key = false
-                var amountCalories = getAmountOfCalories(height, weight)
-                var result = "To achieve the desired weight and with moderate activity, you need to consume calories daily in the amount of $amountCalories"
-
-                return result
+                val amountCalories = getAmountOfCalories(height, weight)
+                return "${resources.getString(R.string.ageError)} $amountCalories"
             }
             return res
 
