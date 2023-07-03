@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">HomeWork</string>
+    <string name="app_name" id="123">HomeWork</string>
+    <string name="textError">Data entered incorrectly:\n</string>
+    <string name="emptyError">the name should not be empty;\n"</string>
+    <string name="heightError">the height must be greater than 0 and less than 250;\n"</string>
+    <string name="widthError">the weight must be greater than 0 and less than 250;\n"</string>
+    <string name="ageError">the age must be greater than 0 and less than 150;\n"</string>
+    <string name="result">To achieve the desired weight and with moderate activity, you need to consume calories daily in the amount of</string>
 </resources>
