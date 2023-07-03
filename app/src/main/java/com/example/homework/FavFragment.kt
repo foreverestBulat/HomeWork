@@ -18,13 +18,13 @@ class FavFragment : Fragment(R.layout.fragment_fav) {
         binding?.run{
             btnToProfile.setOnClickListener {
                 findNavController().navigate(R.id.action_favFragment_to_profileFragment,
-                    ProfileFragment.createBudle("Favorite"))
+                    ProfileFragment.createBudle(resources.getString(R.string.createBudleName)))
             }
         }
     }
 
     override fun onDestroyView() {
-        binding = null
         super.onDestroyView()
+        binding = null
     }
 }
